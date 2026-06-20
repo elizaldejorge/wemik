@@ -47,6 +47,8 @@ window.SITE = {
 
   contact: {
     email: "ejorgejou@gmail.com",
+    phone: "+1 (512) 913-9277",   // included in the saved contact card (vCard)
+    instagram: "https://instagram.com/jorgeelizaldejou",
     github: "https://github.com/elizaldejorge",
     linkedin: "https://www.linkedin.com/in/jorge-elizalde-jourova-3a20672b5",
     x: "",

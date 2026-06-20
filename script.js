@@ -30,6 +30,8 @@
   }
   const cta = $("#hero-cta");
   if (cta) { cta.textContent = S.heroCtaLabel || "See my work"; cta.href = S.heroCtaHref || "#projects"; }
+  const navIg = $("#nav-ig");
+  if (navIg) { if (S.contact && S.contact.instagram) navIg.href = S.contact.instagram; else navIg.remove(); }
 
   /* ---------- Projects ---------- */
   const STATUS_CLASS = { live: "status--live", building: "status--building", beta: "status--beta", "coming soon": "status--soon" };
@@ -72,17 +74,23 @@
     email: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
     github: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a11 11 0 0 0-3.5 21.4c.55.1.75-.24.75-.53v-1.9c-3 .65-3.7-1.4-3.7-1.4-.5-1.3-1.2-1.6-1.2-1.6-1-.67.07-.66.07-.66 1.1.08 1.7 1.13 1.7 1.13 1 1.7 2.6 1.2 3.2.92.1-.72.4-1.2.7-1.5-2.4-.27-5-1.2-5-5.3 0-1.18.42-2.14 1.1-2.9-.1-.27-.48-1.36.1-2.84 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.48.22 2.57.1 2.84.7.76 1.1 1.72 1.1 2.9 0 4.1-2.6 5-5 5.3.4.35.76 1.02.76 2.06v3.05c0 .3.2.64.76.53A11 11 0 0 0 12 1Z"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14ZM8.34 18.34V9.99H5.67v8.35h2.67ZM7 8.8a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1Zm11.34 9.54v-4.57c0-2.45-1.3-3.59-3.05-3.59-1.4 0-2.03.77-2.38 1.31v-1.12h-2.67c.04.75 0 8.35 0 8.35h2.67v-4.66c0-.24.02-.48.09-.65.18-.48.62-.97 1.35-.97.96 0 1.34.73 1.34 1.8v4.48h2.65Z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg>',
     x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.9h3.5l-7.6 8.7 8.9 11.8h-7l-5.5-7.2-6.3 7.2H1.4l8.1-9.3L1 1.9h7.2l5 6.6 5.7-6.6Zm-1.2 18.4h1.9L6.6 3.9H4.5l13.2 16.4Z"/></svg>',
     website: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg>',
   };
-  const LABELS = { email: "Email", github: "GitHub", linkedin: "LinkedIn", x: "X / Twitter", website: "Website" };
+  const LABELS = { email: "Email", instagram: "Instagram", github: "GitHub", linkedin: "LinkedIn", x: "X / Twitter", website: "Website" };
   function subLabel(key, val) {
     if (key === "email") return val;
-    try { return new URL(val).pathname.replace(/^\/+|\/+$/g, "") || new URL(val).hostname; } catch { return ""; }
+    try {
+      const u = new URL(val);
+      const path = u.pathname.replace(/^\/+|\/+$/g, "");
+      if (key === "instagram" || key === "x") return path ? "@" + path : u.hostname;
+      return path || u.hostname;
+    } catch { return ""; }
   }
   const contactWrap = $("#contact-links");
   if (contactWrap && S.contact) {
-    ["email", "github", "linkedin", "x", "website"].forEach((key) => {
+    ["email", "instagram", "github", "linkedin", "x", "website"].forEach((key) => {
       const val = S.contact[key];
       if (!val) return;
       const a = document.createElement("a");
@@ -104,10 +112,12 @@
       `N:${last};${first};;;`,
       `FN:${S.name || ""}`,
       S.role ? `TITLE:${S.role}` : "",
+      c.phone ? `TEL;TYPE=CELL:${c.phone}` : "",
       c.email ? `EMAIL;TYPE=INTERNET:${c.email}` : "",
       S.domain ? `URL:https://${S.domain}` : "",
       c.linkedin ? `URL:${c.linkedin}` : "",
       c.github ? `URL:${c.github}` : "",
+      c.instagram ? `URL:${c.instagram}` : "",
       "END:VCARD",
     ].filter(Boolean);
     return lines.join("\r\n");

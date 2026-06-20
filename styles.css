@@ -80,6 +80,10 @@ svg { display: block; }
   font-weight: 500; transition: background 0.2s;
 }
 .nav__cta:hover { background: var(--accent-press); }
+.nav__ig { display: inline-flex; align-items: center; transition: transform 0.18s, opacity 0.2s; }
+.nav__ig svg { width: 25px; height: 25px; }
+.nav__ig:hover { transform: scale(1.08); }
+.nav__ig:active { transform: scale(0.92); }
 
 /* ---------- Hero ---------- */
 .hero { padding: 44px 22px 52px; max-width: var(--maxw); margin: 0 auto; }
