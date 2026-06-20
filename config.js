@@ -4,7 +4,8 @@
    ============================================================ */
 window.SITE = {
   name: "Jorge Elizalde",
-  initials: "JE",                  // shown in the round avatar
+  initials: "JE",                  // fallback if no photo is set
+  photo: "assets/jorge.jpg",       // round avatar photo (leave "" to use initials)
   role: "Technical Founder",
   tagline: "Technical Founder — I design, build, and ship iOS & web products.",
   bio: "I'm a technical founder who loves turning ideas into real, shippable products — mostly native iOS (Swift) and the web. Currently building and heading to YC Startup School.",
@@ -15,6 +16,15 @@ window.SITE = {
   heroCtaHref: "#projects",
 
   projects: [
+    {
+      name: "PartyTab",
+      blurb: "Split your night. The easy way to split tabs and bills with friends.",
+      logo: "assets/partytab.svg",
+      link: "https://testflight.apple.com/join/z57hGHhd",
+      linkLabel: "Test my app on TestFlight",
+      status: "Beta",
+      tags: ["Swift", "iOS"],
+    },
     {
       name: "YABI",
       blurb: "An iOS app I'm building right now. Native, fast, and focused.",
@@ -32,15 +42,6 @@ window.SITE = {
       linkLabel: "thepmfc.com",
       status: "Live",
       tags: ["HTML", "CSS", "JS"],
-    },
-    {
-      name: "PartyTab",
-      blurb: "Split your night. The easy way to split tabs and bills with friends.",
-      logo: "assets/partytab.svg",
-      link: "",                    // add the App Store link once it's approved
-      linkLabel: "App Store",
-      status: "Coming soon",
-      tags: ["Swift", "iOS"],
     },
   ],
 

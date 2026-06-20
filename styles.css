@@ -91,6 +91,13 @@ svg { display: block; }
   box-shadow: var(--shadow-md);
   margin-bottom: 24px;
   animation: rise 0.7s 0.02s both;
+  overflow: hidden;
+}
+.avatar--photo { display: block; background: var(--surface-2); }  /* override grid so img fills the square */
+.avatar--photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 64%;   /* focus on the face */
 }
 .hero__eyebrow {
   color: var(--text-faint); font-weight: 500; font-size: 1rem;
@@ -181,6 +188,7 @@ a.project:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 }
 .status--live { color: #1d8a4e; background: #e6f6ec; }
 .status--building { color: #b06a00; background: #fdf1dc; }
+.status--beta { color: var(--accent); background: var(--accent-soft); }
 .status--soon { color: var(--text-dim); background: var(--surface-2); }
 .project__link {
   display: inline-flex; align-items: center; gap: 5px;

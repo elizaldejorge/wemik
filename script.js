@@ -20,12 +20,19 @@
   setText("#footer-name", S.name);
   setText("#footer-domain", S.domain);
   const avatar = $("#avatar");
-  if (avatar && S.initials) avatar.textContent = S.initials;
+  if (avatar) {
+    if (S.photo) {
+      avatar.classList.add("avatar--photo");
+      avatar.innerHTML = `<img src="${esc(S.photo)}" alt="${esc(S.name)}" />`;
+    } else if (S.initials) {
+      avatar.textContent = S.initials;
+    }
+  }
   const cta = $("#hero-cta");
   if (cta) { cta.textContent = S.heroCtaLabel || "See my work"; cta.href = S.heroCtaHref || "#projects"; }
 
   /* ---------- Projects ---------- */
-  const STATUS_CLASS = { live: "status--live", building: "status--building", "coming soon": "status--soon" };
+  const STATUS_CLASS = { live: "status--live", building: "status--building", beta: "status--beta", "coming soon": "status--soon" };
   const grid = $("#projects-grid");
   if (grid && Array.isArray(S.projects)) {
     grid.innerHTML = "";
