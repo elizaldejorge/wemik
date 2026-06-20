@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Jorge Elizalde</title>
+  <meta name="description" content="Jorge Elizalde — Technical Founder. iOS & web products. YABI, PMFC, PartyTab." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <meta property="og:title" content="Jorge Elizalde — Technical Founder" />
+  <meta property="og:description" content="I design, build, and ship iOS & web products." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wemik.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <nav class="nav">
+    <a href="#top" class="nav__logo"><span>⚡</span><em id="nav-name">Jorge</em></a>
+    <div class="nav__links">
+      <a href="#projects">Work</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <header class="hero" id="top">
+      <div class="hero__inner">
+        <div class="avatar" id="avatar" aria-hidden="true">JE</div>
+        <p class="hero__eyebrow">Hi, I'm</p>
+        <h1 class="hero__name" id="hero-name">Jorge Elizalde</h1>
+        <p class="hero__role" id="hero-role">Technical Founder</p>
+        <p class="hero__bio" id="hero-bio"></p>
+        <div class="hero__actions">
+          <button class="btn btn--primary" id="save-contact">📇 Save my contact</button>
+          <a class="btn btn--ghost" id="hero-cta" href="#projects">See my work</a>
+        </div>
+        <p class="hero__hint" id="game-hint">psst — hidden game inside 🎮 <span class="kbd-hint">tap to play</span></p>
+      </div>
+    </header>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="section__head">
+        <h2>What I'm building</h2>
+        <p class="section__sub">A few products I've shipped or am shipping now.</p>
+      </div>
+      <div class="projects" id="projects-grid"></div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--contact" id="contact">
+      <div class="section__head">
+        <h2>Let's connect</h2>
+        <p class="section__sub">Find me here — or save my card and reach out anytime.</p>
+      </div>
+      <div class="contact" id="contact-links"></div>
+      <button class="btn btn--primary btn--wide" id="save-contact-2">📇 Save my contact</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span id="footer-name">Jorge Elizalde</span>
+    <span class="footer__dot">•</span>
+    <span id="footer-domain">wemik.com</span>
+    <span class="footer__dot">•</span>
+    <span>Built with ⚡ &amp; ☕</span>
+  </footer>
+
+  <!-- Easter egg game overlay -->
+  <div class="game-overlay" id="game-overlay" hidden>
+    <div class="game-modal">
+      <div class="game-modal__bar">
+        <span class="game-modal__title">🐍 SNAKE</span>
+        <button class="game-modal__close" id="game-close" aria-label="Close game">✕</button>
+      </div>
+      <canvas id="game-canvas" width="360" height="360"></canvas>
+      <div class="game-modal__foot">
+        <span id="game-score">Score: 0</span>
+        <span class="game-modal__hint"><span id="game-status">Swipe or arrow keys to start</span></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

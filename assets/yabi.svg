@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="YABI">
+  <rect width="1024" height="1024" fill="#ffffff"/>
+  <path d="M300 250 L512 470 L724 250 M512 470 L512 800"
+        fill="none" stroke="#2D6BFF" stroke-width="118"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
