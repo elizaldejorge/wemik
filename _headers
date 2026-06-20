@@ -5,7 +5,10 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
+# Revalidate CSS/JS on every load (cheap 304s) so edits are never stale
 /styles.css
-  Cache-Control: public, max-age=3600
+  Cache-Control: no-cache
 /script.js
-  Cache-Control: public, max-age=3600
+  Cache-Control: no-cache
+/config.js
+  Cache-Control: no-cache
