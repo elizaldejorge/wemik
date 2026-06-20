@@ -1,0 +1,9 @@
+{
+  // Cloudflare Workers config — serves this folder as a static site.
+  // No Worker script: it's assets-only, so `wrangler deploy` just uploads the files.
+  "name": "wemik",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./"
+  }
+}
